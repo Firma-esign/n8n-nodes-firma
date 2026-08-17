@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2026-08-17)
+
+- Implement Return All pagination for all list operations
+- Implement document upload (base64), recipients, and settings body assembly for create operations
+- Mask JWT token fields as passwords
+- Alphabetize option lists per n8n linting rules
+- Switch to OIDC trusted publishing
+
 ## 0.1.0 (2026-08-17)
 
 Initial release.
