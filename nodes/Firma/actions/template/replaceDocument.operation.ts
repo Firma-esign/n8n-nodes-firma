@@ -1,5 +1,7 @@
 import type { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
+import { buildRequestBody } from '../../GenericFunctions';
+
 export const description: INodePropertyOptions = {
 	name: 'Replace Document',
 	value: 'replaceDocument',
@@ -9,6 +11,9 @@ export const description: INodePropertyOptions = {
 		request: {
 			method: 'POST',
 			url: '=/templates/{{$parameter.templateId}}/replace-document',
+		},
+		send: {
+			preSend: [buildRequestBody],
 		},
 	},
 };

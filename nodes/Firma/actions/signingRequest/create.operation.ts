@@ -1,5 +1,7 @@
 import type { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
+import { buildRequestBody } from '../../GenericFunctions';
+
 export const description: INodePropertyOptions = {
 	name: 'Create',
 	value: 'create',
@@ -9,6 +11,9 @@ export const description: INodePropertyOptions = {
 		request: {
 			method: 'POST',
 			url: '/signing-requests',
+		},
+		send: {
+			preSend: [buildRequestBody],
 		},
 	},
 };

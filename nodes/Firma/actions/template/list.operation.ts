@@ -1,5 +1,7 @@
 import type { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
+import { firmaPagination } from '../../GenericFunctions';
+
 export const description: INodePropertyOptions = {
 	name: 'List',
 	value: 'list',
@@ -10,6 +12,10 @@ export const description: INodePropertyOptions = {
 			method: 'GET',
 			url: '/templates',
 		},
+		send: {
+			paginate: '={{ $parameter["returnAll"] }}',
+		},
+		operations: firmaPagination,
 		output: {
 			postReceive: [
 				{
