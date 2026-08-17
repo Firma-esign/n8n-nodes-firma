@@ -1,0 +1,61 @@
+{
+	"name": "n8n-nodes-firma",
+	"version": "0.1.0",
+	"description": "n8n community node for Firma.dev — electronic signature and document signing API",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"esignature",
+		"electronic-signature",
+		"document-signing",
+		"firma"
+	],
+	"license": "MIT",
+	"homepage": "https://firma.dev",
+	"author": {
+		"name": "Firma",
+		"email": "support@firma.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Firma-esign/n8n-nodes-firma.git"
+	},
+	"engines": {
+		"node": ">=22.0"
+	},
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc && copyfiles \"nodes/**/*.{svg,json}\" \"credentials/**/*.svg\" dist/",
+		"dev": "tsc --watch",
+		"lint": "eslint nodes credentials",
+		"lint:fix": "eslint nodes credentials --fix",
+		"prepublishOnly": "npm run build",
+		"scan": "npx @n8n/scan-community-package n8n-nodes-firma"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [
+			"dist/credentials/FirmaApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Firma/Firma.node.js",
+			"dist/nodes/Firma/FirmaTrigger.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/eslint-plugin-community-nodes": "^0.29.0",
+		"@types/node": "^22.20.1",
+		"copyfiles": "^2.4.1",
+		"eslint": "9.29.0",
+		"n8n-workflow": "^2.16.0",
+		"prettier": "^3.2.0",
+		"typescript": "~5.4.0",
+		"typescript-eslint": "^8.35.0"
+	},
+	"peerDependencies": {
+		"n8n-workflow": ">=2"
+	}
+}

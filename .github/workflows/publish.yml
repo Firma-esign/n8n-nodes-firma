@@ -1,0 +1,44 @@
+# Publishes n8n-nodes-firma to npm when a GitHub release is created.
+#
+# Authentication — two options, both produce provenance:
+#
+#   OIDC Trusted Publishing (recommended, no secrets):
+#     Set up a trusted publisher on npmjs.com for this repo.
+#     Leave NPM_TOKEN unset. npm uses the OIDC token automatically.
+#
+#   Granular Access Token (fallback / first publish):
+#     Create a granular token on npmjs.com with Read+Write, Bypass 2FA ON.
+#     Store as NPM_TOKEN in repo Settings > Secrets > Actions.
+
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - run: npm run lint
+
+      - name: Publish
+        run: |
+          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          npm publish --provenance --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

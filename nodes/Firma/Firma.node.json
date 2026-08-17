@@ -1,0 +1,17 @@
+{
+	"node": "n8n-nodes-firma.firma",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Communication", "Productivity"],
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://docs.firma.dev/api-reference"
+			}
+		]
+	},
+	"alias": ["esignature", "electronic signature", "document signing", "firma", "esign"],
+	"subcategories": {
+		"Communication": ["Document Signing"]
+	}
+}
