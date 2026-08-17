@@ -41,50 +41,26 @@ export const fields: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Signing Request Email Header',
-				name: 'signingRequestEmailHeader',
-				type: 'string',
-				default: '',
+				displayName: 'Allow Pre-Signing Download',
+				name: 'allowPresigningDownload',
+				type: 'boolean',
+				default: false,
 				routing: {
 					send: {
 						type: 'body',
-						property: 'signing_request_email_header',
+						property: 'allow_presigning_download',
 					},
 				},
 			},
 			{
-				displayName: 'Signing Request Email Body',
-				name: 'signingRequestEmailBody',
-				type: 'string',
-				default: '',
+				displayName: 'Disable Guided Navigation',
+				name: 'disableGuidedNavigation',
+				type: 'boolean',
+				default: false,
 				routing: {
 					send: {
 						type: 'body',
-						property: 'signing_request_email_body',
-					},
-				},
-			},
-			{
-				displayName: 'Team Email',
-				name: 'teamEmail',
-				type: 'string',
-				default: '',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'team_email',
-					},
-				},
-			},
-			{
-				displayName: 'Timezone',
-				name: 'timezone',
-				type: 'string',
-				default: '',
-				routing: {
-					send: {
-						type: 'body',
-						property: 'timezone',
+						property: 'disable_guided_navigation',
 					},
 				},
 			},
@@ -97,18 +73,6 @@ export const fields: INodeProperties[] = [
 					send: {
 						type: 'body',
 						property: 'language',
-					},
-				},
-			},
-			{
-				displayName: 'Show Credit Cost in Editor',
-				name: 'showCreditCostInEditor',
-				type: 'boolean',
-				default: false,
-				routing: {
-					send: {
-						type: 'body',
-						property: 'show_credit_cost_in_editor',
 					},
 				},
 			},
@@ -137,26 +101,26 @@ export const fields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Allow Pre-Signing Download',
-				name: 'allowPresigningDownload',
+				displayName: 'Show Credit Cost in Editor',
+				name: 'showCreditCostInEditor',
 				type: 'boolean',
 				default: false,
 				routing: {
 					send: {
 						type: 'body',
-						property: 'allow_presigning_download',
+						property: 'show_credit_cost_in_editor',
 					},
 				},
 			},
 			{
-				displayName: 'Disable Guided Navigation',
-				name: 'disableGuidedNavigation',
+				displayName: 'Show Partial Watermark',
+				name: 'showPartialWatermark',
 				type: 'boolean',
 				default: false,
 				routing: {
 					send: {
 						type: 'body',
-						property: 'disable_guided_navigation',
+						property: 'show_partial_watermark',
 					},
 				},
 			},
@@ -185,14 +149,50 @@ export const fields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Show Partial Watermark',
-				name: 'showPartialWatermark',
-				type: 'boolean',
-				default: false,
+				displayName: 'Signing Request Email Body',
+				name: 'signingRequestEmailBody',
+				type: 'string',
+				default: '',
 				routing: {
 					send: {
 						type: 'body',
-						property: 'show_partial_watermark',
+						property: 'signing_request_email_body',
+					},
+				},
+			},
+			{
+				displayName: 'Signing Request Email Header',
+				name: 'signingRequestEmailHeader',
+				type: 'string',
+				default: '',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'signing_request_email_header',
+					},
+				},
+			},
+			{
+				displayName: 'Team Email',
+				name: 'teamEmail',
+				type: 'string',
+				default: '',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'team_email',
+					},
+				},
+			},
+			{
+				displayName: 'Timezone',
+				name: 'timezone',
+				type: 'string',
+				default: '',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'timezone',
 					},
 				},
 			},

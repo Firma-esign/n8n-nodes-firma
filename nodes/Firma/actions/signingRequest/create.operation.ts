@@ -119,6 +119,41 @@ const recipientsField: INodeProperties = {
 			displayName: 'Recipient',
 			values: [
 				{
+					displayName: 'Company',
+					name: 'company',
+					type: 'string',
+					default: '',
+					description: 'Company name (the API field is "company", not "company_name")',
+				},
+				{
+					displayName: 'Designation',
+					name: 'designation',
+					type: 'options',
+					options: [
+						{
+							name: 'Signer',
+							value: 'signer',
+						},
+						{
+							name: 'Approver',
+							value: 'approver',
+						},
+						{
+							name: 'CC',
+							value: 'cc',
+						},
+					],
+					default: 'signer',
+				},
+				{
+					displayName: 'Email',
+					name: 'email',
+					type: 'string',
+					placeholder: 'name@email.com',
+					required: true,
+					default: '',
+				},
+				{
 					displayName: 'First Name',
 					name: 'first_name',
 					type: 'string',
@@ -133,25 +168,6 @@ const recipientsField: INodeProperties = {
 					description: 'Required when using document source, optional with template',
 				},
 				{
-					displayName: 'Email',
-					name: 'email',
-					type: 'string',
-					placeholder: 'name@email.com',
-					required: true,
-					default: '',
-				},
-				{
-					displayName: 'Designation',
-					name: 'designation',
-					type: 'options',
-					options: [
-						{ name: 'Signer', value: 'signer' },
-						{ name: 'Approver', value: 'approver' },
-						{ name: 'CC', value: 'cc' },
-					],
-					default: 'signer',
-				},
-				{
 					displayName: 'Order',
 					name: 'order',
 					type: 'number',
@@ -163,13 +179,6 @@ const recipientsField: INodeProperties = {
 					name: 'phone_number',
 					type: 'string',
 					default: '',
-				},
-				{
-					displayName: 'Company',
-					name: 'company',
-					type: 'string',
-					default: '',
-					description: 'Company name (note: use "company" not "company_name")',
 				},
 				{
 					displayName: 'Title',
@@ -196,13 +205,6 @@ const settingsField: INodeProperties = {
 	},
 	options: [
 		{
-			displayName: 'Attach PDF on Finish',
-			name: 'attach_pdf_on_finish',
-			type: 'boolean',
-			default: false,
-			description: 'Whether to attach the signed PDF to the completion email',
-		},
-		{
 			displayName: 'Allow Download',
 			name: 'allow_download',
 			type: 'boolean',
@@ -215,32 +217,33 @@ const settingsField: INodeProperties = {
 			default: false,
 		},
 		{
+			displayName: 'Attach PDF on Finish',
+			name: 'attach_pdf_on_finish',
+			type: 'boolean',
+			default: false,
+			description: 'Whether to attach the signed PDF to the completion email',
+		},
+		{
+			displayName: 'Disable Guided Navigation',
+			name: 'disable_guided_navigation',
+			type: 'boolean',
+			default: false,
+		},
+		{
 			displayName: 'Hand Drawn Only',
 			name: 'hand_drawn_only',
 			type: 'boolean',
 			default: false,
 		},
 		{
-			displayName: 'Show QR Code',
-			name: 'show_qr_code',
+			displayName: 'Require OTP Verification',
+			name: 'require_otp_verification',
 			type: 'boolean',
 			default: false,
 		},
 		{
-			displayName: 'Use Signing Order',
-			name: 'use_signing_order',
-			type: 'boolean',
-			default: false,
-		},
-		{
-			displayName: 'Send Signing Email',
-			name: 'send_signing_email',
-			type: 'boolean',
-			default: true,
-		},
-		{
-			displayName: 'Send Finish Email',
-			name: 'send_finish_email',
+			displayName: 'Send Cancellation Email',
+			name: 'send_cancellation_email',
 			type: 'boolean',
 			default: true,
 		},
@@ -251,20 +254,26 @@ const settingsField: INodeProperties = {
 			default: true,
 		},
 		{
-			displayName: 'Send Cancellation Email',
-			name: 'send_cancellation_email',
+			displayName: 'Send Finish Email',
+			name: 'send_finish_email',
 			type: 'boolean',
 			default: true,
 		},
 		{
-			displayName: 'Require OTP Verification',
-			name: 'require_otp_verification',
+			displayName: 'Send Signing Email',
+			name: 'send_signing_email',
+			type: 'boolean',
+			default: true,
+		},
+		{
+			displayName: 'Show QR Code',
+			name: 'show_qr_code',
 			type: 'boolean',
 			default: false,
 		},
 		{
-			displayName: 'Disable Guided Navigation',
-			name: 'disable_guided_navigation',
+			displayName: 'Use Signing Order',
+			name: 'use_signing_order',
 			type: 'boolean',
 			default: false,
 		},

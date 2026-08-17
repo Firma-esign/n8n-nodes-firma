@@ -50,7 +50,6 @@ export const fields: INodeProperties[] = [
 		default: 50,
 		typeOptions: {
 			minValue: 1,
-			maxValue: 200,
 		},
 		displayOptions: {
 			show: {
@@ -59,7 +58,7 @@ export const fields: INodeProperties[] = [
 				returnAll: [false],
 			},
 		},
-		description: 'Max number of results to return (1-200)',
+		description: 'Max number of results to return',
 		routing: {
 			send: {
 				type: 'query',
@@ -81,6 +80,46 @@ export const fields: INodeProperties[] = [
 		},
 		options: [
 			{
+				displayName: 'Created After',
+				name: 'createdAfter',
+				type: 'dateTime',
+				default: '',
+				description: 'Only return signing requests created after this date',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'created_after',
+					},
+				},
+			},
+			{
+				displayName: 'Created Before',
+				name: 'createdBefore',
+				type: 'dateTime',
+				default: '',
+				description: 'Only return signing requests created before this date',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'created_before',
+					},
+				},
+			},
+			{
+				displayName: 'Exclude Deleted',
+				name: 'excludeDeleted',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to exclude soft-deleted signing requests',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'exclude_deleted',
+						value: '={{$value ? "true" : ""}}',
+					},
+				},
+			},
+			{
 				displayName: 'Name',
 				name: 'name',
 				type: 'string',
@@ -90,28 +129,6 @@ export const fields: INodeProperties[] = [
 					send: {
 						type: 'query',
 						property: 'name',
-					},
-				},
-			},
-			{
-				displayName: 'Status',
-				name: 'status',
-				type: 'multiOptions',
-				options: [
-					{ name: 'Not Sent', value: 'not_sent' },
-					{ name: 'In Progress', value: 'in_progress' },
-					{ name: 'Finished', value: 'finished' },
-					{ name: 'Cancelled', value: 'cancelled' },
-					{ name: 'Deleted', value: 'deleted' },
-					{ name: 'Expired', value: 'expired' },
-				],
-				default: [],
-				description: 'Filter by status (comma-separated in API)',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'status',
-						value: '={{$value.join(",")}}',
 					},
 				},
 			},
@@ -142,41 +159,15 @@ export const fields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Created After',
-				name: 'createdAfter',
-				type: 'dateTime',
-				default: '',
-				description: 'Only return signing requests created after this date',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'created_after',
-					},
-				},
-			},
-			{
-				displayName: 'Created Before',
-				name: 'createdBefore',
-				type: 'dateTime',
-				default: '',
-				description: 'Only return signing requests created before this date',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'created_before',
-					},
-				},
-			},
-			{
 				displayName: 'Sort By',
 				name: 'sortBy',
 				type: 'options',
 				options: [
 					{ name: 'Created On', value: 'created_on' },
-					{ name: 'Name', value: 'name' },
 					{ name: 'Expiration Hours', value: 'expiration_hours' },
-					{ name: 'Sent On', value: 'sent_on' },
 					{ name: 'Finished On', value: 'finished_on' },
+					{ name: 'Name', value: 'name' },
+					{ name: 'Sent On', value: 'sent_on' },
 				],
 				default: 'created_on',
 				routing: {
@@ -203,16 +194,24 @@ export const fields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Exclude Deleted',
-				name: 'excludeDeleted',
-				type: 'boolean',
-				default: false,
-				description: 'Whether to exclude soft-deleted signing requests',
+				displayName: 'Status',
+				name: 'status',
+				type: 'multiOptions',
+				options: [
+					{ name: 'Cancelled', value: 'cancelled' },
+					{ name: 'Deleted', value: 'deleted' },
+					{ name: 'Expired', value: 'expired' },
+					{ name: 'Finished', value: 'finished' },
+					{ name: 'In Progress', value: 'in_progress' },
+					{ name: 'Not Sent', value: 'not_sent' },
+				],
+				default: [],
+				description: 'Filter by status (comma-separated in API)',
 				routing: {
 					send: {
 						type: 'query',
-						property: 'exclude_deleted',
-						value: '={{$value ? "true" : ""}}',
+						property: 'status',
+						value: '={{$value.join(",")}}',
 					},
 				},
 			},

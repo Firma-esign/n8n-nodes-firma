@@ -107,12 +107,6 @@ export const fields: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Attach PDF on Finish',
-				name: 'attach_pdf_on_finish',
-				type: 'boolean',
-				default: false,
-			},
-			{
 				displayName: 'Allow Download',
 				name: 'allow_download',
 				type: 'boolean',
@@ -121,6 +115,12 @@ export const fields: INodeProperties[] = [
 			{
 				displayName: 'Allow Pre-Signing Download',
 				name: 'allow_presigning_download',
+				type: 'boolean',
+				default: false,
+			},
+			{
+				displayName: 'Attach PDF on Finish',
+				name: 'attach_pdf_on_finish',
 				type: 'boolean',
 				default: false,
 			},

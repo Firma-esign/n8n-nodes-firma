@@ -50,7 +50,6 @@ export const fields: INodeProperties[] = [
 		default: 50,
 		typeOptions: {
 			minValue: 1,
-			maxValue: 200,
 		},
 		displayOptions: {
 			show: {
@@ -59,7 +58,7 @@ export const fields: INodeProperties[] = [
 				returnAll: [false],
 			},
 		},
-		description: 'Max number of results to return (1-200)',
+		description: 'Max number of results to return',
 		routing: {
 			send: {
 				type: 'query',

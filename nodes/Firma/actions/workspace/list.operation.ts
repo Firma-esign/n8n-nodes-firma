@@ -50,7 +50,6 @@ export const fields: INodeProperties[] = [
 		default: 50,
 		typeOptions: {
 			minValue: 1,
-			maxValue: 200,
 		},
 		displayOptions: {
 			show: {
@@ -59,7 +58,7 @@ export const fields: INodeProperties[] = [
 				returnAll: [false],
 			},
 		},
-		description: 'Max number of results to return (1-200)',
+		description: 'Max number of results to return',
 		routing: {
 			send: {
 				type: 'query',
@@ -81,6 +80,30 @@ export const fields: INodeProperties[] = [
 		},
 		options: [
 			{
+				displayName: 'Created After',
+				name: 'createdAfter',
+				type: 'dateTime',
+				default: '',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'created_after',
+					},
+				},
+			},
+			{
+				displayName: 'Created Before',
+				name: 'createdBefore',
+				type: 'dateTime',
+				default: '',
+				routing: {
+					send: {
+						type: 'query',
+						property: 'created_before',
+					},
+				},
+			},
+			{
 				displayName: 'Name',
 				name: 'name',
 				type: 'string',
@@ -98,9 +121,9 @@ export const fields: INodeProperties[] = [
 				name: 'sortBy',
 				type: 'options',
 				options: [
+					{ name: 'Created On', value: 'created_on' },
 					{ name: 'Name', value: 'name' },
 					{ name: 'Protected', value: 'protected' },
-					{ name: 'Created On', value: 'created_on' },
 				],
 				default: 'created_on',
 				routing: {
@@ -123,30 +146,6 @@ export const fields: INodeProperties[] = [
 					send: {
 						type: 'query',
 						property: 'sort_order',
-					},
-				},
-			},
-			{
-				displayName: 'Created After',
-				name: 'createdAfter',
-				type: 'dateTime',
-				default: '',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'created_after',
-					},
-				},
-			},
-			{
-				displayName: 'Created Before',
-				name: 'createdBefore',
-				type: 'dateTime',
-				default: '',
-				routing: {
-					send: {
-						type: 'query',
-						property: 'created_before',
 					},
 				},
 			},

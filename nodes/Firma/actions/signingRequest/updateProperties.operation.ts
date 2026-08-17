@@ -41,15 +41,26 @@ export const fields: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Name',
-				name: 'name',
-				type: 'string',
-				default: '',
-				description: 'New name for the signing request (1-255 characters)',
+				displayName: 'Allow Download',
+				name: 'allowDownload',
+				type: 'boolean',
+				default: false,
 				routing: {
 					send: {
 						type: 'body',
-						property: 'name',
+						property: 'settings.allow_download',
+					},
+				},
+			},
+			{
+				displayName: 'Attach PDF on Finish',
+				name: 'attachPdfOnFinish',
+				type: 'boolean',
+				default: false,
+				routing: {
+					send: {
+						type: 'body',
+						property: 'settings.attach_pdf_on_finish',
 					},
 				},
 			},
@@ -79,30 +90,6 @@ export const fields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: 'Attach PDF on Finish',
-				name: 'attachPdfOnFinish',
-				type: 'boolean',
-				default: false,
-				routing: {
-					send: {
-						type: 'body',
-						property: 'settings.attach_pdf_on_finish',
-					},
-				},
-			},
-			{
-				displayName: 'Allow Download',
-				name: 'allowDownload',
-				type: 'boolean',
-				default: false,
-				routing: {
-					send: {
-						type: 'body',
-						property: 'settings.allow_download',
-					},
-				},
-			},
-			{
 				displayName: 'Hand Drawn Only',
 				name: 'handDrawnOnly',
 				type: 'boolean',
@@ -112,6 +99,19 @@ export const fields: INodeProperties[] = [
 					send: {
 						type: 'body',
 						property: 'settings.hand_drawn_only',
+					},
+				},
+			},
+			{
+				displayName: 'Name',
+				name: 'name',
+				type: 'string',
+				default: '',
+				description: 'New name for the signing request (1-255 characters)',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'name',
 					},
 				},
 			},
