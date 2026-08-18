@@ -67,6 +67,10 @@ cloudflared tunnel --url http://localhost:5678
 ngrok http 5678
 ```
 
+### Webhooks Must Be Enabled
+
+Firma gates webhook delivery behind a master switch at both the company and workspace level. If the trigger activates but never receives events, enable webhooks for your workspace in the Firma dashboard (**Workspace Settings > Webhooks**). The per-webhook Test button bypasses this switch, so a successful test does not confirm real events will deliver.
+
 ### Signature Validation
 
 If a webhook secret is configured in the credential, the trigger node validates the `X-Firma-Signature` header using HMAC-SHA256. It also supports `X-Firma-Signature-Old` for secret rotation grace periods.
