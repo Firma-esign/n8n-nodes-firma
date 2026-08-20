@@ -10,8 +10,5 @@
 			}
 		]
 	},
-	"alias": ["esignature", "electronic signature", "document signing", "firma", "esign"],
-	"subcategories": {
-		"Communication": ["Document Signing"]
-	}
+	"alias": ["esignature", "electronic signature", "document signing", "firma", "esign"]
 }
