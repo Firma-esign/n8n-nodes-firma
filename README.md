@@ -45,8 +45,11 @@ The credential defaults to `https://api.firma.dev`. Select **Custom** environmen
 If you plan to use the **Firma Trigger** node, add your webhook secret to the credential for payload signature validation:
 
 1. In Firma, go to **Workspace Settings > Webhooks** (or **Company Settings > Webhooks** for company-level secrets)
-2. Copy the **Webhook Secret** shown on that page. If no secret exists yet, generate one using the **Rotate Secret** action
-3. In your n8n Firma API credential, paste the secret into the **Webhook Secret** field
+2. Enable webhooks if not already enabled. A secret is automatically generated when you turn webhooks on
+3. Copy the **Webhook Secret** using the show/copy controls on that page
+4. In your n8n Firma API credential, paste the secret into the **Webhook Secret** field
+
+If you need to rotate the secret later, use the **Regenerate** button. Firma keeps the old secret valid for a 7-day grace period, so existing integrations continue working while you update credentials.
 
 Without a secret, the trigger node will still receive events but cannot verify that payloads genuinely came from Firma. See the [Webhooks guide](https://docs.firma.dev/api-reference/webhooks) for full setup, including enabling webhook delivery and configuring event subscriptions.
 
