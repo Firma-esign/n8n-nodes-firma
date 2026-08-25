@@ -13,6 +13,15 @@ n8n community node for [Firma.dev](https://firma.dev) — electronic signature a
 3. Enter `n8n-nodes-firma`
 4. Agree to the risks and select **Install**
 
+### From the Workflow Editor
+
+You can also install the node without leaving your workflow:
+
+1. Open any workflow and click **+** to add a node
+2. Search for **Firma** in the node search panel
+3. If the node is not yet installed, n8n shows it under **Community Nodes** in the search results with an **Install** option
+4. Select it to install and add it to your workflow in one step
+
 ### Manual Installation
 
 ```bash
