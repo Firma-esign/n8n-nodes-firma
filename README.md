@@ -37,9 +37,18 @@ Restart n8n after installation.
 2. Copy your **API Key**
 3. In n8n, create a new **Firma API** credential
 4. Paste your API key
-5. (Optional) Paste your **Webhook Secret** if using the trigger node with signature validation
 
 The credential defaults to `https://api.firma.dev`. Select **Custom** environment only for self-hosted or staging instances.
+
+### Webhook Secret (optional)
+
+If you plan to use the **Firma Trigger** node, add your webhook secret to the credential for payload signature validation:
+
+1. In Firma, go to **Workspace Settings > Webhooks** (or **Company Settings > Webhooks** for company-level secrets)
+2. Copy the **Webhook Secret** shown on that page. If no secret exists yet, generate one using the **Rotate Secret** action
+3. In your n8n Firma API credential, paste the secret into the **Webhook Secret** field
+
+Without a secret, the trigger node will still receive events but cannot verify that payloads genuinely came from Firma. See the [Webhooks guide](https://docs.firma.dev/api-reference/webhooks) for full setup, including enabling webhook delivery and configuring event subscriptions.
 
 ## Resources and Operations
 
@@ -78,7 +87,7 @@ ngrok http 5678
 
 ### Webhooks Must Be Enabled
 
-Firma gates webhook delivery behind a master switch at both the company and workspace level. If the trigger activates but never receives events, enable webhooks for your workspace in the Firma dashboard (**Workspace Settings > Webhooks**). The per-webhook Test button bypasses this switch, so a successful test does not confirm real events will deliver.
+Firma gates webhook delivery behind a master switch at both the company and workspace level. If the trigger activates but never receives events, enable webhooks for your workspace in the Firma dashboard (**Workspace Settings > Webhooks**). The per-webhook Test button bypasses this switch, so a successful test does not confirm real events will deliver. See the [Webhooks guide](https://docs.firma.dev/api-reference/webhooks) for details on enabling delivery and managing event subscriptions.
 
 ### Signature Validation
 
